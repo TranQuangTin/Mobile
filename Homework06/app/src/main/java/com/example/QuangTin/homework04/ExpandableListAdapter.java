@@ -47,11 +47,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
-        Button bt=(Button)  convertView.findViewById(R.id.Btn);
+       // TextView txtListChild = (TextView) convertView
+       //         .findViewById(R.id.lblListItem);
+        Button bt=(Button)  convertView.findViewById(R.id.lblListItem);
         bt.setText(childText);
-        txtListChild.setText(childText);
+    //    txtListChild.setText(childText);
         return convertView;
     }
 

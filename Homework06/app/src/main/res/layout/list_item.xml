@@ -4,17 +4,8 @@
     android:layout_height="55dip"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/lblListItem"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textSize="17dip"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textAlignment="center"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
     <Button
-        android:id="@+id/Btn"
+        android:id="@+id/lblListItem"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_x="0dp"

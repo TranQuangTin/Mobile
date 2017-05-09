@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -12,10 +13,10 @@ import android.widget.ExpandableListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = MainActivity.class.getSimpleName();
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate: test");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -58,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (groupPosition == 2) {
                     if (childPosition == 0) {
-                        libMapClick(v);
+                        TriMap(v);
                     } else {
-                        libWebClick(v);
+                        TriWeb(v);
                     }
                 } else {
                     if (childPosition == 0) {
@@ -73,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
         listDataHeader.add("Đại học Sài Gòn");
         listDataHeader.add("Alta Media Co.Ltd");
-        listDataHeader.add("Thư viện trung tâm ĐHQG");
+        listDataHeader.add("Pyramid Software & Consulting");
         listDataHeader.add("AEON Bình Tân");
 
         List<String> sgu = new ArrayList<String>();
@@ -91,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         ctyTin.add("Map It");
         ctyTin.add("More Infor");
 
-        List<String> lib = new ArrayList<String>();
-        lib.add("Xem bản đồ");
-        lib.add("Truy cập website");
+        List<String> ctyTri = new ArrayList<String>();
+        ctyTri.add("Map It");
+        ctyTri.add("More Infor");
 
         List<String> aeon = new ArrayList<String>();
         aeon.add("Xem bản đồ");
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         listDataChild.put(listDataHeader.get(0), sgu);
         listDataChild.put(listDataHeader.get(1), ctyTin);
-        listDataChild.put(listDataHeader.get(2), lib);
+        listDataChild.put(listDataHeader.get(2), ctyTri);
         listDataChild.put(listDataHeader.get(3), aeon);
     }
 
@@ -129,12 +130,12 @@ public class MainActivity extends AppCompatActivity {
         openBrowser("http://www.altamedia.vn/");
     }
 
-    public void libMapClick(View view) {
-        openWebView("https://www.google.com/maps/place/Th%C6%B0+vi%E1%BB%87n+Trung+t%C3%A2m+%C4%90HQG+-+HCM/@10.8698184,106.7960072,15z/data=!4m5!3m4!1s0x0:0xf2f6dc77057ba1df!8m2!3d10.8698184!4d106.7960072");
+    public void TriMap(View view) {
+        openWebView("https://www.google.com/maps/place/Pyramid+Software+%26+Consulting/@10.797537,106.6912369,15z/data=!4m5!3m4!1s0x0:0xfa26e56900423d76!8m2!3d10.797537!4d106.6912369");
     }
 
-    public void libWebClick(View view) {
-        openBrowser("http://www.vnulib.edu.vn/#1");
+    public void TriWeb(View view) {
+        openBrowser("http://psctelecom.com.vn/");
     }
 
     private void openWebView(String url) {
